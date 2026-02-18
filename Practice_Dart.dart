@@ -5,6 +5,8 @@ void main() {
     "dart is fun fun fun"
   ];
 
+  print("Highest frequency word(s) per line:\n");
+
   for (int i = 0; i < sentences.length; i++) {
     String line = sentences[i];
     List<String> words = line.split(' ');
@@ -15,14 +17,15 @@ void main() {
       frequencyMap[word] = (frequencyMap[word] ?? 0) + 1;
     }
 
-    int maxFrequency = frequencyMap.values.reduce((a, b) => a > b ? a : b);
+    int maxFrequency =
+        frequencyMap.values.reduce((a, b) => a > b ? a : b);
 
     List<String> highestWords = frequencyMap.entries
         .where((entry) => entry.value == maxFrequency)
         .map((entry) => entry.key)
         .toList();
 
-    print('The following words have the highest word frequency per line:');
-    print('$highestWords (appears in line #${i + 1})\n');
+    print("Line ${i + 1}: $highestWords (appears $maxFrequency times)");
   }
+
 }
